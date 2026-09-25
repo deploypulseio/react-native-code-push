@@ -50,7 +50,9 @@ public class CodePush implements ReactPackage {
 
     // Config properties.
     private String mDeploymentKey;
-    private static String mServerUrl = "https://codepush.appcenter.ms/";
+    // DeployPulse by default. Overridden by CodePushServerUrl in strings.xml, by the Expo config plugin,
+    // or by the constructor. Upstream pointed at App Center, which Microsoft retired.
+    private static String mServerUrl = "https://apps.deploypulse.io/";
 
     private Context mContext;
     private final boolean mIsDebugMode;
