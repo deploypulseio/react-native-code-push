@@ -46,7 +46,9 @@ static NSString * const PublicKeyKey = @"publicKey";
     }
 
     if (!serverURL) {
-        serverURL = @"https://codepush.appcenter.ms/";
+        // DeployPulse by default. Overridden by CodePushServerURL in Info.plist or by the Expo config
+        // plugin. Upstream pointed at App Center, which Microsoft retired.
+        serverURL = @"https://apps.deploypulse.io/";
     }
 
     _configDictionary = [NSMutableDictionary dictionary];
