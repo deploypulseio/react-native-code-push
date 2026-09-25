@@ -199,7 +199,7 @@ The JavaScript API is identical to the original CodePush SDK. Full reference:
 
 ## Upstream
 
-This package is a fork of [CodePushNext/react-native-code-push](https://github.com/CodePushNext/react-native-code-push), which is itself a fork of [microsoft/react-native-code-push](https://github.com/microsoft/react-native-code-push). We track upstream changes and apply DeployPulse-specific configuration on top.
+This package is a fork of [react-native-code-push](https://github.com/codemagic-ci-cd/react-native-code-push) (formerly CodePushNext, now maintained by Codemagic), which is itself a fork of [microsoft/react-native-code-push](https://github.com/microsoft/react-native-code-push). We track upstream changes and apply DeployPulse-specific configuration on top.
 
 **DeployPulse additions over upstream:**
 - Expo managed workflow config plugin (`expo.js`) with pre-configured server URL
