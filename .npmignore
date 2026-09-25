@@ -101,3 +101,7 @@ packages/
 .git/
 
 .watchmanconfig
+
+# Repo tooling, not part of the published SDK
+.azurepipelines/
+.config/
