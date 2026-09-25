@@ -1,16 +1,22 @@
 {
-  "name": "@code-push-next/react-native-code-push",
+  "name": "@deploypulseio/react-native-code-push",
   "version": "10.4.3",
-  "description": "React Native plugin for the CodePush service",
+  "description": "React Native CodePush SDK pre-configured for DeployPulse: drop-in OTA updates with Expo managed workflow support",
   "main": "CodePush.js",
+  "expo": "./expo.js",
   "typings": "typings/react-native-code-push.d.ts",
-  "homepage": "https://github.com/codemagic-ci-cd/react-native-code-push",
+  "homepage": "https://docs.deploypulse.io",
   "keywords": [
     "react-native",
+    "code-push",
+    "ota",
+    "expo",
+    "deploypulse",
+    "over-the-air",
     "code",
     "push"
   ],
-  "author": "Code Push Next",
+  "author": "DeployPulse",
   "license": "MIT",
   "scripts": {
     "clean": "shx rm -rf bin",
@@ -38,7 +44,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/codemagic-ci-cd/react-native-code-push"
+    "url": "https://github.com/deploypulseio/react-native-code-push"
   },
   "peerDependencies": {
     "expo": "*"
@@ -88,8 +94,8 @@
       ]
     },
     "commands": {
-      "postlink": "node node_modules/@code-push-next/react-native-code-push/scripts/postlink/run",
-      "postunlink": "node node_modules/@code-push-next/react-native-code-push/scripts/postunlink/run"
+      "postlink": "node node_modules/@deploypulseio/react-native-code-push/scripts/postlink/run",
+      "postunlink": "node node_modules/@deploypulseio/react-native-code-push/scripts/postunlink/run"
     }
   }
 }

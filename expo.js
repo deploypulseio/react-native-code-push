@@ -9,6 +9,8 @@ const {
 const fs = require('fs');
 const path = require('path');
 
+const DEPLOYPULSE_SERVER_URL = 'https://apps.deploypulse.io';
+
 //================ iOS (Unchanged) ================
 function addImportIOS(content) {
   const lines = content.split('\n');
@@ -242,7 +244,7 @@ const withAndroidGradle = (config) => {
       let content = modConfig.modResults.contents;
       
       // This part adds the codepush.gradle apply line and is correct.
-      const codePushApplyLine = 'apply from: "../../node_modules/@code-push-next/react-native-code-push/android/codepush.gradle"';
+      const codePushApplyLine = 'apply from: "../../node_modules/@deploypulseio/react-native-code-push/android/codepush.gradle"';
       if (!content.includes(codePushApplyLine)) {
         content += `\n${codePushApplyLine}\n`;
       }
@@ -328,20 +330,24 @@ const withAndroidStrings = (config, options) => {
   });
 };
 
-// --- CORRECTED EXPORT BLOCK ---
+// --- EXPORT BLOCK ---
 module.exports = (config, options = {}) => {
   if (!options) options = {};
-  
+
+  // Default server URL to DeployPulse; can be overridden per-platform or via top-level serverUrl
+  const serverUrl = options.serverUrl || DEPLOYPULSE_SERVER_URL;
+
   if (options.ios) {
+    options.ios.CodePushServerURL = options.ios.CodePushServerURL || serverUrl;
     config = withCodePushAppDelegate(config, options);
     config = withCodePushInfoPlist(config, options);
   }
-  
+
   if (options.android) {
-    config = withAndroidStrings(config, options); 
-    // Correctly call the wrapper functions we defined
+    options.android.CodePushServerURL = options.android.CodePushServerURL || serverUrl;
+    config = withAndroidStrings(config, options);
     config = withAndroidMainApplication(config);
-    config = withAndroidGradle(config); 
+    config = withAndroidGradle(config);
   }
   return config;
 };
